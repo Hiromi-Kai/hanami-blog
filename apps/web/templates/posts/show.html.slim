@@ -1,0 +1,26 @@
+h2
+  | post
+.post
+  h2
+    = post.title
+  p
+    = post.text
+  - if comments.any?
+    #comments
+      - comments.each do |comment|
+        .comment
+          h2
+            = comment.title
+          p
+            = comment.text
+  -  form_for :comments, "/comments"  do |f|
+    div.input
+      - f.label      :author
+      - f.text_field :author
+
+    div.input
+      - f.label      :content
+      - f.text_field :content
+
+    div.controls
+      - f.submit 'Create Comment'
