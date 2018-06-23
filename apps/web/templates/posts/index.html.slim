@@ -1,12 +1,13 @@
-h1 Blog
-h2 All posts
-
-#posts
-  .post
-    h3 ブログが続きません
-    p
-      | ありがち
-  .post
-    h3 ブログはじめました
-    p
-      | あ
+h2
+  | All posts
+- if posts.any?
+  #posts
+    - posts.each do |post|
+      .post
+        h2
+          = post.title
+        p
+          = post.text
+- else
+  p.placeholder
+    | There are no posts yet.
